@@ -15,35 +15,35 @@ export default function InvitationCard() {
   };
 
   const coupleData = {
-    brideName: "උදාරි",
-    groomName: "හර්ෂ",
-    brideParents: "ආර්. ඒ. අජිත් කුමාර මහතා සහ එම මහත්මිය",
-    groomParents: "ඊ.ඩී. ආරියසේන මහතා සහ එම මහත්මිය",
+    brideName: "Udari",
+    groomName: "Harsha",
+    brideParents: "Mr. R. A. Ajith Kumara and Mrs. Ajith Kumara",
+    groomParents: "Mr. E. D. Ariyasena and Mrs. Ariyasena",
   };
 
   const weddingDetails = {
-    sinhalaDate: "2026 වර්ෂයේ මැයි මස 10 වන දින",
-    time: "පූර්ව භාග 09.00 සිට අපර භාග 04.00 දක්වා",
-    ceremonyTime: "(පෝරුවේ චාරිත්‍ර ප.ව 09.15 ට)",
+    sinhalaDate: "May 10, 2026",
+    time: "9:00 AM to 4:00 PM",
+    ceremonyTime: "(Poruwa Ceremony at 9:15 AM)",
     venue: "KOLONNE RIVERSIDE GARDEN HOTEL",
-    address: "අවිස්සාවේල්ල",
+    address: "Avissawella",
     contact: "📞 0701785075",
   };
 
-  const sinhalaInvitationText = `ශ්‍රී සුභ මංගලම්
+  const sinhalaInvitationText = `Auspicious Wedding
 
-ඊ.ඩී. ආරියසේන මහතාගේ
-සහ එම මහත්මියගේ ආදරණීය පුතුණුවන්
-හර්ෂ
+Of Mr. E. D. Ariyasena
+and Mrs. Ariyasena's beloved son
+Harsha
 
-ආර්. ඒ. අජිත් කුමාර මහතාගේ
-සහ එම මහත්මියගේ ආදරණීය දියණිය
-උදාරි
+And Mr. R. A. Ajith Kumara
+and Mrs. Kumara's beloved daughter
+Udari
 
-මංගල සක් හඬ මද රන් හුයෙන්
-අතැඟිලි බැඳ පති පතිනිය ලෙස
-පෝරුව මස්තක වන සුබ මොහොතේ
-අප හා එක්වන්නට...
+As the wedding bells ring gently
+With hands joined in holy matrimony
+At the auspicious moment of the poruwa ceremony
+We invite you to join us...
 
 ${weddingDetails.sinhalaDate}
 
@@ -51,7 +51,7 @@ ${weddingDetails.venue}
 ${weddingDetails.address}
 
 ${weddingDetails.time}
-පවත්වන ප්‍රිය සම්භාෂණයට සහභාගී වන ලෙස ඔබට කාරුණිකව ආරාධනා කරමු
+We cordially invite you to participate in the joyous celebration
 
 ${weddingDetails.ceremonyTime}
 ${weddingDetails.contact}`;
@@ -135,7 +135,7 @@ ${weddingDetails.contact}`;
               style={{ fontFamily: 'serif', textShadow: '2px 2px 4px rgba(0,0,0,0.1)' }}
             >
               <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-amber-500 to-rose-700 drop-shadow-2xl" style={{ letterSpacing: '0.1em' }}>
-                ශ්‍රී සුභ මංගලම්
+                Auspicious Wedding
               </span>
               <div className="h-2 w-24 sm:w-32 md:w-40 mx-auto mt-4 bg-gradient-to-r from-amber-400 via-rose-400 to-amber-400 rounded-full shadow-lg"></div>
             </motion.h1>
@@ -210,7 +210,7 @@ ${weddingDetails.contact}`;
               <Flower className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" />
             </div>
             <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-rose-600 font-bold">
-              මංගල විස්තර
+              Wedding Details
             </h2>
           </motion.div>
           
@@ -230,7 +230,7 @@ ${weddingDetails.contact}`;
                 <div className="p-2 sm:p-3 bg-gradient-to-br from-amber-400 to-amber-500 rounded-full mr-3 sm:mr-4 shadow-lg">
                   <Calendar className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
                 </div>
-                <h3 className="text-lg sm:text-xl md:text-2xl font-serif text-gray-800 font-semibold">දිනය හා වේලාව</h3>
+                <h3 className="text-lg sm:text-xl md:text-2xl font-serif text-gray-800 font-semibold">Date & Time</h3>
               </div>
               <div className="space-y-4">
                 <div className="flex items-center text-gray-700 bg-white/50 rounded-xl p-2 sm:p-3">
@@ -264,7 +264,7 @@ ${weddingDetails.contact}`;
                 <div className="p-2 sm:p-3 bg-gradient-to-br from-rose-400 to-rose-500 rounded-full mr-3 sm:mr-4 shadow-lg">
                   <MapPin className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
                 </div>
-                <h3 className="text-lg sm:text-xl md:text-2xl font-serif text-gray-800 font-semibold">ස්ථානය</h3>
+                <h3 className="text-lg sm:text-xl md:text-2xl font-serif text-gray-800 font-semibold">Venue</h3>
               </div>
               <div className="space-y-4">
                 <div className="text-gray-700 bg-white/50 rounded-xl p-2 sm:p-3">
@@ -302,7 +302,7 @@ ${weddingDetails.contact}`;
                   <Heart className="w-8 h-8 sm:w-10 sm:h-10 text-white fill-current" />
                 </div>
                 <h3 className="text-xl sm:text-2xl md:text-3xl font-serif text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-rose-600 font-bold mb-2">
-                  සමඟියෙන් සැමදා සමරන්නට
+                  Together Forever in Love
                 </h3>
                 <div className="h-1 w-20 sm:w-24 mx-auto bg-gradient-to-r from-amber-400 to-rose-400 rounded-full" />
               </div>
@@ -316,7 +316,7 @@ ${weddingDetails.contact}`;
                     <div className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-amber-400 to-amber-500 rounded-full mb-3">
                       <Crown className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                     </div>
-                    <p className="text-amber-600 font-semibold mb-3 text-sm sm:text-base">මනාලයාගේ දෙමව්පියන්</p>
+                    <p className="text-amber-600 font-semibold mb-3 text-sm sm:text-base">Groom's Parents</p>
                   </div>
                   <p className="text-gray-800 font-medium text-sm sm:text-base md:text-lg mb-3 italic" style={{ fontFamily: 'serif' }}>{coupleData.groomParents}</p>
                   <p className="text-gray-600 mb-3 sm:mb-4 font-semibold text-amber-700 text-sm sm:text-base">Their beloved son</p>
@@ -333,7 +333,7 @@ ${weddingDetails.contact}`;
                     <div className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-rose-400 to-rose-500 rounded-full mb-3">
                       <Flower className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                     </div>
-                    <p className="text-rose-600 font-semibold mb-3 text-sm sm:text-base">මනාලියගේ දෙමව්පියන්</p>
+                    <p className="text-rose-600 font-semibold mb-3 text-sm sm:text-base">Bride's Parents</p>
                   </div>
                   <p className="text-gray-800 font-medium text-sm sm:text-base md:text-lg mb-3 italic" style={{ fontFamily: 'serif' }}>{coupleData.brideParents}</p>
                   <p className="text-gray-600 mb-3 sm:mb-4 font-semibold text-rose-700 text-sm sm:text-base">Their beloved daughter</p>
