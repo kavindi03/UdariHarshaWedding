@@ -81,48 +81,27 @@ export default function GoogleFormRSVP() {
     setError('');
 
     try {
-      // Prepare data for Google Sheets
-      const sheetData = {
-        name: formData.name,
-        phone: formData.phone,
-        attending: formData.attending ? 'Yes' : 'No',
-        timestamp: new Date().toISOString(),
-        date: new Date().toLocaleDateString(),
-        time: new Date().toLocaleTimeString()
-      };
-
-      // Submit to Google Sheets via Google Apps Script
-      const response = await fetch(GOOGLE_SHEETS_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(sheetData),
-      });
-
-      if (response.ok) {
-        setIsSubmitted(true);
-        console.log('RSVP submitted to Google Sheets successfully');
-      } else {
-        throw new Error('Failed to submit to Google Sheets');
-      }
-
-      // Also submit to Google Form as backup
+      // Submit to Google Form (primary method)
       const formBody = new URLSearchParams();
       formBody.append(FORM_FIELDS.name, formData.name);
       formBody.append(FORM_FIELDS.phone, formData.phone);
       formBody.append(FORM_FIELDS.attending, formData.attending ? 'Yes' : 'No');
 
-      await fetch(GOOGLE_FORM_URL, {
+      const response = await fetch(GOOGLE_FORM_URL, {
         method: 'POST',
-        mode: 'no-cors',
+        mode: 'no-cors', // Required for Google Forms
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
         body: formBody.toString(),
       });
 
-      // Store in localStorage for local backup
+      // Since we're using no-cors, we can't read response
+      // We'll assume it was successful if no error was thrown
+      setIsSubmitted(true);
+      console.log('RSVP submitted successfully');
+
+      // Store in localStorage for backup
       const existingRSVPs = JSON.parse(localStorage.getItem('weddingRSVPs') || '[]');
       existingRSVPs.push({
         ...formData,
