@@ -17,7 +17,7 @@ export default function InvitationCard() {
   const coupleData = {
     brideName: "Udari",
     groomName: "Harsha",
-    brideParents: "Mr. R. A. Ajith Kumara and Mrs. Ajith Kumara",
+    brideParents: "Mr. R. A. Ajith Kumara and Mrs.Kumara",
     groomParents: "Mr. E. D. Ariyasena and Mrs. Ariyasena",
   };
 
