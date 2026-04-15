@@ -10,41 +10,56 @@ export default function MusicPlayer() {
   const audioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
-    // Auto-play music when invitation opens
+    // Auto-play music with multiple attempts
     const startMusic = () => {
       if (audioRef.current && !hasStarted) {
-        audioRef.current.volume = 0.3; // Set volume to 30%
-        audioRef.current.play().then(() => {
-          setIsPlaying(true);
-          setHasStarted(true);
-          console.log('🎵 Music started: A Thousand Years');
-        }).catch((error) => {
-          console.log('Autoplay prevented, will try on user interaction:', error);
-          // Try again on any user interaction
-          const tryPlayOnInteraction = () => {
-            if (audioRef.current && !hasStarted) {
-              audioRef.current.volume = 0.3;
-              audioRef.current.play().then(() => {
-                setIsPlaying(true);
-                setHasStarted(true);
-                console.log('🎵 Music started on user interaction');
-              }).catch(() => {
-                console.log('Music play failed even on interaction');
+        audioRef.current.volume = 0.3;
+        
+        // Create a user interaction context
+        const playWithInteraction = async () => {
+          try {
+            if (audioRef.current) {
+              // First try with muted (more likely to succeed)
+              audioRef.current.muted = true;
+              await audioRef.current.play();
+              
+              // Then unmute after successful play
+              setTimeout(() => {
+                if (audioRef.current) {
+                  audioRef.current.muted = false;
+                  audioRef.current.volume = 0.3;
+                }
+              }, 100);
+              
+              setIsPlaying(true);
+              setHasStarted(true);
+              console.log('Music started: A Thousand Years');
+              
+              // Clean up event listeners after successful play
+              events.forEach(event => {
+                document.removeEventListener(event, playWithInteraction);
               });
             }
-          };
+          } catch (error) {
+            console.log('Play attempt failed, will try again:', error);
+          }
+        };
 
-          // Add multiple event listeners for better autoplay success
-          const events = ['click', 'touchstart', 'keydown', 'scroll'];
-          events.forEach(event => {
-            document.addEventListener(event, tryPlayOnInteraction, { once: true });
-          });
+        // Try immediate play first
+        playWithInteraction().catch(() => {
+          console.log('Autoplay prevented, waiting for user interaction');
+        });
+
+        // Set up multiple interaction events as fallback
+        const events = ['click', 'touchstart', 'mousedown', 'keydown', 'scroll'];
+        events.forEach(event => {
+          document.addEventListener(event, playWithInteraction, { once: true });
         });
       }
     };
 
-    // Try to start music immediately when component mounts
-    const timer = setTimeout(startMusic, 1000); // Wait 1 second then try
+    // Try to start music after a short delay
+    const timer = setTimeout(startMusic, 500);
 
     return () => {
       clearTimeout(timer);
@@ -70,7 +85,7 @@ export default function MusicPlayer() {
 
   return (
     <div className="fixed bottom-6 right-6 z-50">
-      <audio ref={audioRef} loop>
+      <audio ref={audioRef} loop autoPlay muted>
         <source src="/music/a-thousand-years.mp3" type="audio/mpeg" />
         Your browser does not support the audio element.
       </audio>

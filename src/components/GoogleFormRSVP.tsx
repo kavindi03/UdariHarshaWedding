@@ -58,6 +58,7 @@ export default function GoogleFormRSVP() {
     setIsAuthenticated(false);
     setShowAdminPanel(false);
     setShowRSVPData(false);
+    setAdminPassword('');
   };
 
   const getRSVPData = () => {
@@ -143,7 +144,7 @@ export default function GoogleFormRSVP() {
   };
 
   // Admin Panel Component
-  if (showAdminPanel) {
+  if (showAdminPanel && isAuthenticated) {
     const rsvpData = getRSVPData();
     const stats = getAttendanceStats();
     
