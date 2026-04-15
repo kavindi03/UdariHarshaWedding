@@ -29,14 +29,17 @@ export default function GoogleFormRSVP() {
   // Admin password (you can change this)
   const ADMIN_PASSWORD = 'udariharsha2026';
 
-  // Google Form URL - Replace with your actual Google Form URL
-  const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse';
+  // Google Sheets Webhook URL - Replace with your actual Google Apps Script URL
+  const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxfGJ11VdKhRNJDPW_nYuqjxT4tv5jT1Or8_A4p1RLBhdyAduzx8TklEPY0EBJ_M1py/exec';
 
-  // Google Form field IDs - Replace with your actual field IDs
+  // Alternative: Use a simple Google Form (easier setup)
+  const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSf1234567890abcdef/formResponse';
+
+  // Google Form field IDs - You'll get these from your Google Form
   const FORM_FIELDS = {
-    name: 'entry.1234567890',
-    phone: 'entry.1122334455',
-    attending: 'entry.5566778899',
+    name: 'entry.2005620554',
+    phone: 'entry.1045781291',
+    attending: 'entry.1168473476',
   };
 
   const handleInputChange = (field: keyof RSVPData, value: string | number | boolean) => {
@@ -78,27 +81,48 @@ export default function GoogleFormRSVP() {
     setError('');
 
     try {
-      // Create form data for Google Forms
+      // Prepare data for Google Sheets
+      const sheetData = {
+        name: formData.name,
+        phone: formData.phone,
+        attending: formData.attending ? 'Yes' : 'No',
+        timestamp: new Date().toISOString(),
+        date: new Date().toLocaleDateString(),
+        time: new Date().toLocaleTimeString()
+      };
+
+      // Submit to Google Sheets via Google Apps Script
+      const response = await fetch(GOOGLE_SHEETS_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(sheetData),
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        console.log('RSVP submitted to Google Sheets successfully');
+      } else {
+        throw new Error('Failed to submit to Google Sheets');
+      }
+
+      // Also submit to Google Form as backup
       const formBody = new URLSearchParams();
       formBody.append(FORM_FIELDS.name, formData.name);
       formBody.append(FORM_FIELDS.phone, formData.phone);
       formBody.append(FORM_FIELDS.attending, formData.attending ? 'Yes' : 'No');
 
-      // Submit to Google Forms
-      const response = await fetch(GOOGLE_FORM_URL, {
+      await fetch(GOOGLE_FORM_URL, {
         method: 'POST',
-        mode: 'no-cors', // Required for Google Forms
+        mode: 'no-cors',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
         body: formBody.toString(),
       });
 
-      // Since we're using no-cors, we can't read the response
-      // We'll assume it was successful if no error was thrown
-      setIsSubmitted(true);
-      
-      // Store in localStorage for backup
+      // Store in localStorage for local backup
       const existingRSVPs = JSON.parse(localStorage.getItem('weddingRSVPs') || '[]');
       existingRSVPs.push({
         ...formData,
