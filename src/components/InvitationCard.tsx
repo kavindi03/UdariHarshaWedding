@@ -18,7 +18,7 @@ export default function InvitationCard() {
     brideName: "Udari",
     groomName: "Harsha",
     brideParents: "Mr. & Mrs. Ranasinghe",
-    groomParents: "Mr. & Mrs. Ehelepola",
+    groomParents: "Mr. & Mrs. Ehalapola",
   };
 
   const weddingDetails = {
@@ -32,7 +32,7 @@ export default function InvitationCard() {
 
   const sinhalaInvitationText = `Auspicious Wedding
 
-Of Mr. & Mrs. Ehelepola's beloved son
+Of Mr. & Mrs. Ehalapola's beloved son
 Harsha
 
 And Mr. & Mrs. Ranasinghe's beloved daughter
