@@ -17,8 +17,8 @@ export default function InvitationCard() {
   const coupleData = {
     brideName: "Udari",
     groomName: "Harsha",
-    brideParents: "Mr. R. A. Ajith Kumara and Mrs.Kumara",
-    groomParents: "Mr. E. D. Ariyasena and Mrs. Ariyasena",
+    brideParents: "Mr. & Mrs. Ranasinghe",
+    groomParents: "Mr. & Mrs. Ahelepola",
   };
 
   const weddingDetails = {
@@ -32,12 +32,10 @@ export default function InvitationCard() {
 
   const sinhalaInvitationText = `Auspicious Wedding
 
-Of Mr. E. D. Ariyasena
-and Mrs. Ariyasena's beloved son
+Of Mr. & Mrs. Ahelepola's beloved son
 Harsha
 
-And Mr. R. A. Ajith Kumara
-and Mrs. Kumara's beloved daughter
+And Mr. & Mrs. Ranasinghe's beloved daughter
 Udari
 
 As the wedding bells ring gently
