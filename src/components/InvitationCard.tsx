@@ -18,7 +18,7 @@ export default function InvitationCard() {
     brideName: "Udari",
     groomName: "Harsha",
     brideParents: "Mr. & Mrs. Ranasinghe",
-    groomParents: "Mr. & Mrs. Ahelepola",
+    groomParents: "Mr. & Mrs. Ehelepola",
   };
 
   const weddingDetails = {
@@ -27,12 +27,12 @@ export default function InvitationCard() {
     ceremonyTime: "(Poruwa Ceremony at 9:15 AM)",
     venue: "KOLONNE RIVERSIDE GARDEN HOTEL",
     address: "Avissawella",
-    contact: "📞 0701785075",
+    contact: "📞 0760408237",
   };
 
   const sinhalaInvitationText = `Auspicious Wedding
 
-Of Mr. & Mrs. Ahelepola's beloved son
+Of Mr. & Mrs. Ehelepola's beloved son
 Harsha
 
 And Mr. & Mrs. Ranasinghe's beloved daughter
